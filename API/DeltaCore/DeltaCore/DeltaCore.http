@@ -1,0 +1,6 @@
+@DeltaCore_HostAddress = http://localhost:5136
+
+GET {{DeltaCore_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
