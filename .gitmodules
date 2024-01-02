@@ -1,0 +1,3 @@
+[submodule "UI/FullStack.UI/DeltaWare"]
+	path = UI/FullStack.UI/DeltaWare
+	url = https://github.com/Shantanu-pawar/DeltaWare/
