@@ -8,13 +8,12 @@ namespace DeltaCore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
-    {
+    public class ProductController : ControllerBase {
+    
         private readonly IMapper _mapper;
         private readonly IProductService _service;
 
-        public ProductController(IMapper mapper, IProductService service)
-        {
+        public ProductController(IMapper mapper, IProductService service) {
             _mapper = mapper;
             _service = service;
         }
@@ -34,21 +33,19 @@ namespace DeltaCore.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            // You may want to use AutoMapper or manual mapping here
+            
             var product = new Product
             {
                 ProductId = productDto.ProductId,
                 Name = productDto.Name,
                 Description = productDto.Description
-                // Other properties
             };
 
             await _service.CreateProduct(product);
             return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
         }
 
-        // Additional action to retrieve a single product by Id
+        // after posting the product it always fetch it by id in swagger especially.
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
@@ -64,11 +61,10 @@ namespace DeltaCore.Controllers
         }
     }
 
-    public class ProductRequestDto
-    {
+    public class ProductRequestDto {
+    
         public string ProductId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        // Other properties if needed
     }
 }
